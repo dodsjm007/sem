@@ -8,8 +8,5 @@ Moving on to lab 2. Will test workflow in gitHub
 [![Releases](https://img.shields.io/github/release/dodsjm007/sem/all.svg?style=flat-square)](https://github.com/dodsjm007/sem/releases)
 
 # Software Engineering Methods
-![GitHub Workflow Status (branch)]https://img.shields.io/github/actions/workflow/status/dodsjm007/sem/main.yml?style=flat-square
-
-# Software Engineering Methods
 ![GitHub Workflow Status (develop)](https://img.shields.io/github/workflow/status/dodsjm007/sem/main.yml/develop?style=flat-square)
 
