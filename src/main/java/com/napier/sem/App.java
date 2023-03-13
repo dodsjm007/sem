@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+
 public class App
 {
 
@@ -11,21 +12,20 @@ public class App
 
     public static void main(String[] args)
     {
+        // Create new Application
+        App a = new App();
 
-            // Create new Application
-            App a = new App();
+        // Connect to database
+        a.connect();
+        // Get Employee
+        Employee emp = a.getEmployee(255530);
+        // Display results
+        a.displayEmployee(emp);
 
-            // Connect to database
-            a.connect();
+        // Disconnect from database
+        a.disconnect();
+    }
 
-            // Get Employee
-            Employee emp = a.getEmployee(255530);
-            // Display results
-            a.displayEmployee(emp);
-
-            // Disconnect from database
-            a.disconnect();
-        }
 
     /**
      * Connect to the MySQL database.
@@ -58,7 +58,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i );
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -134,10 +134,5 @@ public class App
                             + emp.dept_name + "\n"
                             + "Manager: " + emp.manager + "\n");
         }
-
-        else {
-            System.out.println("Database information null" );
-        }
     }
-
 }
