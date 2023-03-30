@@ -25,6 +25,8 @@ public class AppTest
         app.printSalaries(null);
     }
 
+
+
     @Test
     void printSalariesTestEmpty()
     {
