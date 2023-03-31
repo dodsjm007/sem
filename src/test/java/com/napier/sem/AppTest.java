@@ -30,16 +30,16 @@ public class AppTest
     @Test
     void printSalariesTestEmpty()
     {
-        ArrayList<Employee> employess = new ArrayList<Employee>();
-        app.printSalaries(employess);
+        ArrayList<Employee> employees = new ArrayList<Employee>();
+        app.printSalaries(employees);
     }
 
     @Test
     void printSalariesTestContainsNull()
     {
-        ArrayList<Employee> employess = new ArrayList<Employee>();
-        employess.add(null);
-        app.printSalaries(employess);
+        ArrayList<Employee> employees = new ArrayList<Employee>();
+        employees.add(null);
+        app.printSalaries(employees);
     }
 
     @Test
@@ -54,5 +54,17 @@ public class AppTest
         emp.salary = 55000;
         employees.add(emp);
         app.printSalaries(employees);
+    }
+
+    @Test
+    void displayEmployeeTestNull()
+    {
+        app.displayEmployee(null);
+    }
+
+    @Test
+    void displayEmployeeTestEmpty()
+    {
+        app.displayEmployee(new Employee());
     }
 }
