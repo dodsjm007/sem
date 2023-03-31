@@ -1,5 +1,7 @@
 package com.napier.sem;
 
+import com.sun.source.tree.TryTree;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -21,6 +23,9 @@ public class App
         // Get Employee
         Employee emp = a.getEmployee(255530);
         // Display results
+
+        //get Salaries by Dept
+    //    ArrayList<Employee> employees = a.getSalariesByDepartment("d007");
         a.displayEmployee(emp);
 
         // Disconnect from database
@@ -160,6 +165,90 @@ public class App
                             emp.emp_no, emp.first_name, emp.last_name, emp.salary);
             System.out.println(emp_string);
         }
+    }
+
+    public Department getDepartment(String dept_name)
+    {
+        Department dept = new Department();
+
+        try
+        {
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT departments.dept_no, departments.dept_name, dept_manager.emp_no   "
+                    + " FROM Department, Dept_Manager"
+                    + " WHERE dept_name = '" + dept_name +"'"
+                    + " AND Dept_Manager.dept_no = Deptartment.dept_no"
+                    + " AND Dept_Manager.to_date = '9999-01-01'";
+
+            ResultSet rs = stmt.executeQuery(strSelect);
+
+            if(rs.next())
+            {
+                dept.dept_no = rs.getInt("dept_No");
+                dept.dept_name = rs.getString("dept_name");
+                dept.manager = new App().getEmployee(rs.getInt("emp_no"));
+
+                return dept;
+            }
+
+
+
+        }catch(Exception e)
+        {
+            System.out.println(e.toString());
+        }
+
+        return null;
+    }
+
+    public ArrayList<Employee> getSalariesByDepartment(Department dept)
+    {
+        ArrayList<Employee> employees = new ArrayList<>();
+        Employee emp = new Employee();
+
+        try
+        {
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+
+            "SELECT employees.emp_no, employees.first_name, employees.last_name, salaries.salary "
+           +" FROM employees, salaries, dept_emp, departments "
+           +" WHERE employees.emp_no = salaries.emp_no "
+           +" AND employees.emp_no = dept_emp.emp_no "
+           +" AND dept_emp.dept_no = departments.dept_no"
+           +" AND salaries.to_date = '9999-01-01'"
+           +" AND departments.dept_no = '<dept_no>'"
+           +" ORDER BY employees.emp_no ASC";
+
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new employee if valid.
+            // Check one is returned
+            while (rset.next())
+            {
+                emp.emp_no = rset.getInt("emp_no");
+                emp.first_name = rset.getString("first_name");
+                emp.last_name = rset.getString("last_name");
+                emp.salary = rset.getInt("salary");
+
+                employees.add(emp);
+            }
+
+
+
+
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+
+        return employees;
+
     }
 
 
