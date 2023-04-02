@@ -239,8 +239,6 @@ public class App
             }
 
 
-
-
         }catch (Exception e)
         {
             System.out.println(e.getMessage());
@@ -250,6 +248,4 @@ public class App
         return employees;
 
     }
-
-
 }
