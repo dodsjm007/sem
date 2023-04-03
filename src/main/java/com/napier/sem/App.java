@@ -18,8 +18,17 @@ public class App
         // Create new Application
         App a = new App();
 
-        // Connect to database
-        a.connect();
+
+
+        if(args.length < 1) {
+            // Connect to database
+            a.connect("localhost:3306", 0);
+        }else
+        {
+            System.out.println("Connecting to Docker Database");
+            a.connect(args[0], Integer.parseInt((args[1])));
+        }
+
         // Get Employee
         Employee emp = a.getEmployee(255530);
         // Display results
@@ -36,7 +45,7 @@ public class App
     /**
      * Connect to the MySQL database.
      */
-    public void connect()
+    public void connect(String location, int delay)
     {
         try
         {
@@ -58,7 +67,9 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://" + location
+                                + "/employees",
+                        "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
