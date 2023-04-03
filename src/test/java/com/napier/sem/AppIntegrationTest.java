@@ -28,6 +28,4 @@ public class AppIntegrationTest {
         assertEquals(emp.first_name, "Ronghao");
         assertEquals(emp.last_name, "Garigliano");
     }
-
-
 }
