@@ -21,8 +21,8 @@ public class App
 
 
         if(args.length < 1) {
-            // Connect to database
-            a.connect("localhost:3306", 0);
+            // Connect to local database
+            a.connect("127.0.0.1:3306", 3000);
         }else
         {
             System.out.println("Connecting to Docker Database");
@@ -65,10 +65,10 @@ public class App
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(10000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://" + location
-                                + "/employees?allowPublicKeyRetrieval=true&useSSL=false",
+                                + "/employees?useSSL=false",
                         "root", "example");
                 System.out.println("Successfully connected");
                 break;
