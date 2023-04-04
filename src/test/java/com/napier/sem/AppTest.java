@@ -1,13 +1,11 @@
-package com.napier.sem;
+package sem;
 
+import com.napier.sem.App;
+import com.napier.sem.Employee;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-
 import java.util.ArrayList;
-import java.util.EnumMap;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest
 {
