@@ -38,7 +38,10 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn -Dtest=com.napier.sem.AppTest test
+        run: |
+          docker-compose up --abort-on-container-exit
+           mvn -Dtest=com.napier.sem.AppTest test      
+          
 
   IntegrationTests:
     name: Integration Tests
