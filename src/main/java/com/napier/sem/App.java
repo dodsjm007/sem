@@ -68,7 +68,7 @@ public class App
                 Thread.sleep(10000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://" + location
-                                + "/employees?useSSL=false",
+                                + "/employees",
                         "root", "example");
                 System.out.println("Successfully connected");
                 break;
