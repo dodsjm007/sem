@@ -18,7 +18,7 @@ public class AppIntegrationTest {
     {
         app = new App();
         System.out.println("Connecting to database from AppIntegrationTest init()...");
-        app.connect("127.0.0.1:33333", 3000);
+        app.connect("127.0.0.1:3306", 3000);
 
     }
 
