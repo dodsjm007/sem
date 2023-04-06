@@ -17,6 +17,8 @@ public class AppIntegrationTest {
     static void init()
     {
         app = new App();
+        System.out.println( "Connnecting to db from AppIntegrationTest.init()");
+
         app.connect("localhost:33333", 3000);
     }
 
