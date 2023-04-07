@@ -43,8 +43,8 @@ jobs:
           docker rm employees
           docker image rm database     
           
-      - name: CodeCov
-        uses: codecov/codecov-action@v2
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3v-action@v2
         with:
           # token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: ./target/site/jacoco
